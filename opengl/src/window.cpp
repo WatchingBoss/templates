@@ -4,7 +4,7 @@
 void
 define_window_hints()
 {
-	glfwWindowHind(GLFW_RESIZABLE, GLFW_FALSE);
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -34,18 +34,18 @@ framebuffer_size_callback(GLFWwindow *win, int width, int height)
 /* END Window */
 
 /* INPUT */
-float postion_changing[3] = {0};
+float position_changing[3] = {0};
 
 void
 key_callback(GLFWwindow *win, int key, int scancode, int action, int mods)
 {
-	if(key == GLFW_KEY_F4 && action == GLFW_PRESS)
+	if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(win, true);
 		return;
 	}
 
-	float position_changing_value = 0.25f;
+	float position_changing_value = POSITION_CHANGING_VALUE;
 	switch(key)
 	{
 	  case GLFW_KEY_UP:
@@ -56,6 +56,7 @@ key_callback(GLFWwindow *win, int key, int scancode, int action, int mods)
 			  else
 				  position_changing[1] = position_changing_value;
 		  }
+		  break;
 	  case GLFW_KEY_DOWN:
 		  if(action == GLFW_PRESS)
 		  {
@@ -64,12 +65,15 @@ key_callback(GLFWwindow *win, int key, int scancode, int action, int mods)
 			  else
 			  position_changing[1] = -position_changing_value;
 		  }
+		  break;
 	  case GLFW_KEY_RIGHT:
 		  if(action == GLFW_PRESS)
 			  position_changing[0] = position_changing_value;
+		  break;
 	  case GLFW_KEY_LEFT:
 		  if(action == GLFW_PRESS)
 			  position_changing[0]  = -position_changing_value;
+		  break;
 	}
 
 	if( (key == GLFW_KEY_UP    || key == GLFW_KEY_DOWN  ||

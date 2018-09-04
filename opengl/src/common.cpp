@@ -35,7 +35,7 @@ sys_error(const char *e)
 
 /* Dynamic allocation */
 void *
-xmalloc(size_t size)
+xmalloc(int size)
 {
 	void *ptr = malloc(size);
 	if(!ptr)

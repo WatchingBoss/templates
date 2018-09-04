@@ -16,6 +16,9 @@ else()
   set (THIRD_PART_LIBS "/media/ubu/data/Documents/libs/third_part_libs/")
 endif()
 
+# Including headers of third part libraries
+include_directories (${THIRD_PART_LIBS})
+
 # Third part libraries
 add_library(ThirdPartLib
   ${THIRD_PART_LIBS}imgui/imgui.cpp
